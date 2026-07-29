@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rack — Never Skip Alone</title>
+<title>Arievo — Never Skip Alone</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
@@ -91,15 +91,19 @@
   .photo-section .wrap{position:relative; z-index:2;}
   .overlay-light::before{
     content:""; position:absolute; inset:0; z-index:1;
-    background:linear-gradient(180deg, rgba(251,248,242,0.88), rgba(251,248,242,0.97));
+    background:linear-gradient(180deg, rgba(251,248,242,0.93), rgba(251,248,242,0.97));
   }
   .overlay-orange-tint::before{
     content:""; position:absolute; inset:0; z-index:1;
-    background:linear-gradient(160deg, rgba(251,248,242,0.86), rgba(255,90,31,0.14) 55%, rgba(251,248,242,0.96));
+    background:
+      linear-gradient(160deg, rgba(255,90,31,0.12), rgba(255,90,31,0) 60%),
+      rgba(251,248,242,0.94);
   }
   .overlay-teal-tint::before{
     content:""; position:absolute; inset:0; z-index:1;
-    background:linear-gradient(160deg, rgba(251,248,242,0.88), rgba(46,125,125,0.14) 55%, rgba(251,248,242,0.96));
+    background:
+      linear-gradient(160deg, rgba(46,125,125,0.12), rgba(46,125,125,0) 60%),
+      rgba(251,248,242,0.94);
   }
 
   .blob{
@@ -165,6 +169,7 @@
     margin-bottom:12px; background-size:cover; background-position:center;
   }
   .buddy-card .name{font-weight:600; font-size:0.95rem; color:var(--ink);}
+  .verified-badge{color:var(--teal); font-weight:700; margin-left:2px;}
   .buddy-card .meta{color:var(--dim); font-size:0.78rem; margin-top:4px;}
   .pulse-line{
     flex:1; height:2px; position:relative; margin:0 -10px; z-index:1;
@@ -322,7 +327,7 @@
 
 <nav>
   <div class="wrap">
-    <div class="logo">RACK<span>.</span></div>
+    <div class="logo">ARIEVO<span>.</span></div>
     <ul class="nav-links-desktop">
       <li><a href="#matching">Matching</a></li>
       <li><a href="#trainers">Trainers</a></li>
@@ -338,9 +343,9 @@
   <div class="photo-bg" style="background-image:url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1600&q=80&auto=format&fit=crop');"></div>
   <div class="blob" style="width:280px; height:280px; background:var(--orange); top:10%; right:6%;"></div>
   <div class="wrap">
-    <span class="eyebrow mono">// GYM BUDDY MATCHING</span>
+    <span class="eyebrow mono">// VERIFIED GYM BUDDIES</span>
     <h1>Never skip<br>a set <em>alone</em>.</h1>
-    <p class="sub">Rack matches you with a workout partner by split, schedule, and level, shows you who's training nearby on a live gym map, and rewards the streak you're building &mdash; not the one you gave up on.</p>
+    <p class="sub">Arievo matches you with an identity-verified workout partner by split, schedule, and level, shows you who's training nearby on a live gym map, and rewards the streak you're building &mdash; not the one you gave up on.</p>
     <div class="hero-ctas">
       <a href="#join" class="btn-primary">Get early access</a>
       <a href="#matching" class="btn-ghost">See how matching works</a>
@@ -349,7 +354,7 @@
     <div class="match-demo">
       <div class="buddy-card">
         <div class="avatar" style="background-image:url('https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&q=80&auto=format&fit=crop');"></div>
-        <div class="name">You</div>
+        <div class="name">You <span class="verified-badge" title="Verified identity">&#10003;</span></div>
         <div class="meta mono">6PM &middot; Push day</div>
       </div>
       <div class="pulse-line">
@@ -359,7 +364,7 @@
       </div>
       <div class="buddy-card">
         <div class="avatar" style="background-image:url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80&auto=format&fit=crop');"></div>
-        <div class="name">Jordan</div>
+        <div class="name">Jordan <span class="verified-badge" title="Verified identity">&#10003;</span></div>
         <div class="meta mono">6PM &middot; Push day</div>
       </div>
     </div>
@@ -373,11 +378,11 @@
         <span class="feature-tag mono">01 &mdash; MATCHING</span>
         <h2>Matched on the<br>metrics that matter.</h2>
       </div>
-      <p class="feature-desc">Workout style, fitness level, goal, and training times &mdash; not just a nearby zip code. Set your preferences once and Rack surfaces people worth actually training with.</p>
+      <p class="feature-desc">Workout style, fitness level, goal, and training times &mdash; not just a nearby zip code. Every buddy is identity-verified, so you know exactly who's showing up.</p>
     </div>
     <div class="matching-grid reveal">
       <div>
-        <p style="font-size:1.05rem; line-height:1.6; color:var(--dim); max-width:480px;">Flip &ldquo;Looking for a buddy&rdquo; on, browse gyms on the map, and raise your hand at one &mdash; everyone else looking there sees it instantly. No more scrolling a directory of strangers.</p>
+        <p style="font-size:1.05rem; line-height:1.6; color:var(--dim); max-width:480px;">Flip &ldquo;Looking for a buddy&rdquo; on, browse gyms on the map, and raise your hand at one &mdash; everyone else looking there sees it instantly, verified badge and all. No more scrolling a directory of strangers.</p>
       </div>
       <div class="matching-photo" style="background-image:url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80&auto=format&fit=crop');"></div>
     </div>
@@ -392,17 +397,17 @@
         <span class="feature-tag mono">02 &mdash; TRAINERS</span>
         <h2>Real trainers,<br>on the platform.</h2>
       </div>
-      <p class="feature-desc">Certified trainers set their specialty, rate, and availability right in Rack. Send a session request and get a tick or a cross back &mdash; no third-party booking app.</p>
+      <p class="feature-desc">Every trainer on Arievo is 100% certified &mdash; verified before they ever appear in search. Don't want a full training plan? Book a single 1:1 session with any available coach instead, no package required.</p>
     </div>
     <div class="trainer-grid reveal">
       <div class="trainer-copy">
         <h2 style="font-size:1.8rem;">Every session, one request away.</h2>
-        <p style="color:var(--dim); margin-top:14px; line-height:1.6;">Filter by specialty, see real availability, and message your trainer before you ever step in the gym. They accept, you're booked.</p>
+        <p style="color:var(--dim); margin-top:14px; line-height:1.6;">Filter by specialty, see real availability, and message your trainer before you ever step in the gym. No exclusive contracts &mdash; book one session or many, whenever a certified coach is free. They accept, you're booked.</p>
       </div>
       <div class="trainer-card">
-        <span class="tag">CERTIFIED</span>
+        <span class="tag">100% CERTIFIED</span>
         <h3>Strength &amp; conditioning</h3>
-        <p>1:1 sessions &middot; on-platform messaging &middot; feedback and ratings synced to their profile.</p>
+        <p>1:1 sessions, no commitment &middot; on-platform messaging &middot; feedback and ratings synced to their profile.</p>
         <a href="#join" class="book-btn">Send a session request</a>
       </div>
     </div>
@@ -418,7 +423,7 @@
         <span class="feature-tag mono">03 &mdash; STREAKS</span>
         <h2>30 days in.<br>One session free.</h2>
       </div>
-      <p class="feature-desc">Hit a 30-day workout streak and Rack covers a free session with one of our trainers. Miss a day? Spend one of two streak freezes instead of losing it all.</p>
+      <p class="feature-desc">Hit a 30-day workout streak and Arievo covers a free session with one of our trainers. Miss a day? Spend one of two streak freezes instead of losing it all.</p>
     </div>
 
     <div class="reveal">
@@ -437,7 +442,7 @@
         <span class="feature-tag mono">04 &mdash; GROUPS</span>
         <h2>Every gym has<br>a leaderboard.</h2>
       </div>
-      <p class="feature-desc">Join your gym's group or start one with friends. Rack ranks everyone on a transparent engagement score &mdash; streak, weekly sessions, monthly volume, consistency, and tenure.</p>
+      <p class="feature-desc">Join your gym's group or start one with friends. Arievo ranks everyone on a transparent engagement score &mdash; streak, weekly sessions, monthly volume, consistency, and tenure.</p>
     </div>
     <div class="guarantee-grid reveal">
       <div class="guarantee-card">
@@ -473,7 +478,7 @@
       <div class="phase">
         <span class="mono">STEP 1</span>
         <h4>Pick</h4>
-        <p>Reps + weight, reps only, timed holds, or duration + distance &mdash; Rack tracks the right metrics for the movement.</p>
+        <p>Reps + weight, reps only, timed holds, or duration + distance &mdash; Arievo tracks the right metrics for the movement.</p>
       </div>
       <div class="phase">
         <span class="mono">STEP 2</span>
@@ -499,8 +504,8 @@
 
 <footer>
   <div class="wrap">
-    <div class="logo">RACK<span>.</span></div>
-    <div>&copy; 2026 Rack. Built for people who show up.</div>
+    <div class="logo">ARIEVO<span>.</span></div>
+    <div>&copy; 2026 Arievo. Built for people who show up.</div>
   </div>
 </footer>
 
