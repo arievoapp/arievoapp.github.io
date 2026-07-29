@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rack — Never Skip Alone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #2A2622;
+    --chalk: #FBF8F2;
+    --chalk-2: #F1ECE0;
+    --card: #FFFFFF;
+    --dim: #7A7266;
+    --orange: #FF5A1F;
+    --teal: #2E7D7D;
+    --teal-light: #4FA6A6;
+    --line: rgba(42,38,34,0.12);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background: var(--chalk);
+    color: var(--ink);
+    font-family:'Work Sans', sans-serif;
+    overflow-x:hidden;
+  }
+  h1,h2,h3, .display{
+    font-family:'Anton', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    line-height:0.92;
+  }
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:0.04em;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
+
+  a:focus-visible, button:focus-visible{
+    outline:3px solid var(--orange);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,248,242,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:16px; padding-bottom:16px;
+  }
+  .logo{font-family:'Anton', sans-serif; font-size:1.5rem; letter-spacing:0.02em; color:var(--ink);}
+  .logo span{color:var(--orange);}
+  nav ul{list-style:none; display:flex; gap:28px;}
+  nav a{font-size:0.85rem; text-decoration:none; color:var(--dim); transition:color 0.2s;}
+  nav a:hover{color:var(--ink);}
+  .nav-cta{
+    background:var(--orange); color:#fff; padding:10px 18px;
+    border-radius:2px; font-weight:600; font-size:0.85rem; text-decoration:none;
+    display:inline-block; transition:transform 0.15s ease;
+  }
+  .nav-cta:hover{transform:translateY(-2px);}
+  .nav-links-desktop{display:flex;}
+  @media (max-width:720px){
+    .nav-links-desktop{display:none;}
+  }
+
+  /* PHOTO BACKGROUND UTILITY */
+  .photo-section{
+    position:relative;
+    overflow:hidden;
+  }
+  .photo-bg{
+    position:absolute; inset:0; z-index:0;
+    background-size:cover; background-position:center;
+    background-color: var(--chalk-2);
+    transform:scale(1.06);
+    transition:transform 6s ease;
+  }
+  .photo-section:hover .photo-bg{transform:scale(1);}
+  .photo-section .wrap{position:relative; z-index:2;}
+  .overlay-light::before{
+    content:""; position:absolute; inset:0; z-index:1;
+    background:linear-gradient(180deg, rgba(251,248,242,0.65), rgba(251,248,242,0.93));
+  }
+  .overlay-orange-tint::before{
+    content:""; position:absolute; inset:0; z-index:1;
+    background:linear-gradient(160deg, rgba(251,248,242,0.55), rgba(255,90,31,0.16) 55%, rgba(251,248,242,0.92));
+  }
+  .overlay-teal-tint::before{
+    content:""; position:absolute; inset:0; z-index:1;
+    background:linear-gradient(160deg, rgba(251,248,242,0.6), rgba(46,125,125,0.18) 55%, rgba(251,248,242,0.93));
+  }
+
+  .blob{
+    position:absolute; border-radius:50%; filter:blur(70px); opacity:0.28; z-index:1;
+    animation:float 9s ease-in-out infinite;
+  }
+  @keyframes float{
+    0%,100%{transform:translateY(0px) translateX(0px);}
+    50%{transform:translateY(-24px) translateX(14px);}
+  }
+
+  /* HERO */
+  .hero{
+    padding:110px 0 130px;
+  }
+  .eyebrow{
+    color:var(--orange); font-size:0.8rem; margin-bottom:18px; display:block; font-weight:600;
+  }
+  .hero h1{
+    font-size:clamp(3rem, 9vw, 6.4rem);
+    max-width:900px;
+    color:var(--ink);
+  }
+  .hero h1 em{
+    font-style:normal; color:var(--orange);
+  }
+  .hero p.sub{
+    color:#544d43; font-size:1.15rem; max-width:520px; margin-top:28px;
+    line-height:1.5;
+  }
+  .hero-ctas{display:flex; gap:16px; margin-top:40px; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--orange); color:#fff; padding:16px 30px;
+    font-weight:700; border:none; border-radius:2px; font-size:1rem;
+    cursor:pointer; transition:transform 0.15s ease, box-shadow 0.15s ease;
+    text-decoration:none; display:inline-block;
+  }
+  .btn-primary:hover{transform:translateY(-3px); box-shadow:0 10px 24px rgba(255,90,31,0.35);}
+  .btn-ghost{
+    background:rgba(255,255,255,0.5); color:var(--ink); padding:16px 30px;
+    font-weight:600; border:1px solid var(--line); border-radius:2px; font-size:1rem;
+    cursor:pointer; text-decoration:none; display:inline-block;
+    transition:border-color 0.15s ease, background 0.15s ease;
+    backdrop-filter:blur(4px);
+  }
+  .btn-ghost:hover{border-color:var(--ink); background:rgba(255,255,255,0.8);}
+
+  .match-demo{
+    margin-top:64px;
+    display:flex; align-items:center; justify-content:center; gap:0;
+    max-width:640px;
+  }
+  .buddy-card{
+    background:rgba(255,255,255,0.85); backdrop-filter:blur(6px);
+    border:1px solid var(--line); border-radius:6px;
+    padding:20px; width:220px; position:relative; z-index:2;
+    transition: transform 0.3s ease;
+    box-shadow:0 12px 30px rgba(42,38,34,0.08);
+  }
+  .buddy-card:hover{transform:translateY(-6px);}
+  .buddy-card .avatar{
+    width:44px; height:44px; border-radius:50%; background:var(--teal-light);
+    margin-bottom:12px; background-size:cover; background-position:center;
+  }
+  .buddy-card .name{font-weight:600; font-size:0.95rem; color:var(--ink);}
+  .buddy-card .meta{color:var(--dim); font-size:0.78rem; margin-top:4px;}
+  .pulse-line{
+    flex:1; height:2px; position:relative; margin:0 -10px; z-index:1;
+    min-width:60px;
+  }
+  .pulse-line svg{width:100%; height:40px; display:block; overflow:visible;}
+  .pulse-line path{
+    fill:none; stroke:var(--orange); stroke-width:2;
+    stroke-dasharray:340; stroke-dashoffset:340;
+    animation:draw 2.4s ease-in-out infinite;
+  }
+  @keyframes draw{
+    0%{stroke-dashoffset:340;}
+    50%{stroke-dashoffset:0;}
+    100%{stroke-dashoffset:-340;}
+  }
+
+  /* SECTION SHELL */
+  section.feature{
+    padding:110px 0;
+    position:relative;
+  }
+  .feature-head{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:24px;
+    margin-bottom:56px; flex-wrap:wrap; border-bottom:1px solid var(--line); padding-bottom:28px;
+  }
+  .feature-tag{
+    font-size:0.78rem; color:var(--teal); font-weight:600;
+  }
+  .feature-head h2{font-size:clamp(2rem, 5vw, 3.4rem); color:var(--ink);}
+  .feature-desc{max-width:440px; font-size:1rem; line-height:1.55; color:var(--dim);}
+
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity 0.7s ease, transform 0.7s ease;}
+  .reveal.in-view{opacity:1; transform:translateY(0);}
+
+  /* MATCHING SECTION w/ side photo */
+  .matching-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center;}
+  .matching-photo{
+    border-radius:8px; overflow:hidden; aspect-ratio:4/5; background-size:cover; background-position:center;
+    box-shadow:0 20px 40px rgba(42,38,34,0.15);
+    transition:transform 0.4s ease;
+    background-color:var(--chalk-2);
+  }
+  .matching-photo:hover{transform:translateY(-6px);}
+  @media (max-width:800px){
+    .matching-grid{grid-template-columns:1fr;}
+  }
+
+  /* TRAINER SECTION */
+  .trainer-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;}
+  .trainer-card{
+    background:rgba(255,255,255,0.9); backdrop-filter:blur(6px); border:1px solid var(--line); border-radius:6px;
+    padding:28px; max-width:340px;
+    box-shadow:0 12px 30px rgba(42,38,34,0.08);
+  }
+  .trainer-card .tag{
+    display:inline-block; background:var(--orange); color:#fff;
+    font-size:0.7rem; font-weight:700; padding:4px 10px; border-radius:2px; margin-bottom:14px;
+  }
+  .trainer-card h3{font-family:'Work Sans'; text-transform:none; font-size:1.15rem; font-weight:700; letter-spacing:0; color:var(--ink);}
+  .trainer-card p{color:var(--dim); font-size:0.9rem; margin-top:8px; line-height:1.5;}
+  .book-btn{
+    margin-top:18px; display:inline-block; background:var(--teal); color:#fff;
+    padding:10px 18px; border-radius:2px; font-weight:600; font-size:0.85rem; text-decoration:none;
+    transition:background 0.2s ease;
+  }
+  .book-btn:hover{background:var(--teal-light);}
+  .trainer-copy h2{margin-bottom:16px; color:var(--ink);}
+
+  /* STREAK / SIGNATURE SECTION */
+  .streak-row{
+    display:flex; gap:8px; flex-wrap:wrap; margin:48px 0 28px;
+  }
+  .streak-dot{
+    width:26px; height:26px; border-radius:4px; border:1px solid rgba(42,38,34,0.25);
+    background:rgba(255,255,255,0.4);
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  }
+  .streak-dot.filled{
+    background:var(--orange); border-color:var(--orange);
+  }
+  @media (max-width:600px){
+    .streak-dot{width:18px; height:18px;}
+  }
+  .streak-status{
+    font-family:'IBM Plex Mono', monospace; font-size:0.95rem; color:var(--orange);
+    display:flex; align-items:center; gap:10px; font-weight:600;
+  }
+  .streak-badge{
+    display:inline-block; margin-top:20px; border:1px solid var(--orange); color:var(--orange); background:rgba(255,255,255,0.7);
+    padding:10px 16px; font-size:0.8rem; font-weight:600; border-radius:2px; opacity:0; transition:opacity 0.4s ease;
+  }
+  .streak-badge.show{opacity:1;}
+
+  /* GUARANTEE */
+  .photo-strip{
+    height:220px; background-size:cover; background-position:center 30%;
+    position:relative; margin-bottom:0; background-color:var(--chalk-2);
+  }
+  .photo-strip::before{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(251,248,242,0.25), var(--chalk) 95%);
+  }
+  .guarantee-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .guarantee-card{
+    border:1px solid var(--line); border-radius:6px; padding:26px;
+    background:var(--card);
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .guarantee-card:hover{transform:translateY(-5px); box-shadow:0 14px 30px rgba(42,38,34,0.1);}
+  .guarantee-card .num{
+    font-family:'IBM Plex Mono'; color:var(--teal); font-size:0.85rem; margin-bottom:14px; display:block;
+  }
+  .guarantee-card h3{font-family:'Work Sans'; text-transform:none; font-size:1.05rem; font-weight:700; letter-spacing:0; margin-bottom:8px; color:var(--ink);}
+  .guarantee-card p{font-size:0.9rem; color:var(--dim); line-height:1.5;}
+  @media (max-width:800px){
+    .guarantee-grid{grid-template-columns:1fr;}
+  }
+
+  /* PERIODIZATION / PREMIUM */
+  .phase-track{
+    display:flex; border-radius:6px; overflow:hidden; margin-top:44px; border:1px solid var(--line);
+    background:rgba(255,255,255,0.75); backdrop-filter:blur(6px);
+  }
+  .phase{
+    flex:1; padding:22px 18px; position:relative;
+  }
+  .phase:not(:last-child){border-right:1px solid var(--line);}
+  .phase .mono{font-size:0.72rem; color:var(--orange); display:block; margin-bottom:8px;}
+  .phase h4{font-family:'Work Sans'; text-transform:none; font-weight:700; font-size:1rem; letter-spacing:0; margin-bottom:6px; color:var(--ink);}
+  .phase p{font-size:0.82rem; color:var(--dim); line-height:1.4;}
+  .premium-badge{
+    display:inline-block; background:var(--teal); color:#fff; font-size:0.7rem; font-weight:700;
+    padding:4px 10px; border-radius:2px; margin-bottom:16px;
+  }
+  @media (max-width:720px){
+    .phase-track{flex-direction:column;}
+    .phase:not(:last-child){border-right:none; border-bottom:1px solid var(--line);}
+  }
+
+  /* CTA / FOOTER */
+  .final-cta{
+    text-align:center; padding:140px 0 120px;
+  }
+  .final-cta h2{font-size:clamp(2.2rem, 7vw, 4.2rem); max-width:760px; margin:0 auto 28px; color:var(--ink);}
+  .final-cta .btn-primary{font-size:1.05rem; padding:18px 36px;}
+  footer{
+    background:var(--ink); color:#B7AFA2; padding:36px 0; font-size:0.8rem;
+  }
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+  footer .logo{color:var(--chalk);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">RACK<span>.</span></div>
+    <ul class="nav-links-desktop">
+      <li><a href="#matching">Matching</a></li>
+      <li><a href="#trainers">Trainers</a></li>
+      <li><a href="#streaks">Streaks</a></li>
+      <li><a href="#guarantee">Guarantee</a></li>
+      <li><a href="#premium">Premium</a></li>
+    </ul>
+    <a href="#join" class="nav-cta">Get early access</a>
+  </div>
+</nav>
+
+<header class="hero photo-section overlay-orange-tint">
+  <div class="photo-bg" style="background-image:url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1600&q=80&auto=format&fit=crop');"></div>
+  <div class="blob" style="width:280px; height:280px; background:var(--orange); top:10%; right:6%;"></div>
+  <div class="wrap">
+    <span class="eyebrow mono">// GYM BUDDY MATCHING</span>
+    <h1>Never skip<br>a set <em>alone</em>.</h1>
+    <p class="sub">Rack matches you with a workout partner who actually shows up, connects you to real trainers on the platform, and rewards the streak you're building &mdash; not the one you gave up on.</p>
+    <div class="hero-ctas">
+      <a href="#join" class="btn-primary">Get early access</a>
+      <a href="#matching" class="btn-ghost">See how matching works</a>
+    </div>
+
+    <div class="match-demo">
+      <div class="buddy-card">
+        <div class="avatar" style="background-image:url('https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&q=80&auto=format&fit=crop');"></div>
+        <div class="name">You</div>
+        <div class="meta mono">6PM &middot; Push day</div>
+      </div>
+      <div class="pulse-line">
+        <svg viewBox="0 0 200 40" preserveAspectRatio="none">
+          <path d="M0,20 L60,20 L75,4 L90,36 L105,20 L200,20"/>
+        </svg>
+      </div>
+      <div class="buddy-card">
+        <div class="avatar" style="background-image:url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80&auto=format&fit=crop');"></div>
+        <div class="name">Jordan</div>
+        <div class="meta mono">6PM &middot; Push day</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="feature" id="matching">
+  <div class="wrap">
+    <div class="feature-head reveal">
+      <div>
+        <span class="feature-tag mono">01 &mdash; MATCHING</span>
+        <h2>Matched on the<br>metrics that matter.</h2>
+      </div>
+      <p class="feature-desc">Schedule, split, and pace &mdash; not just a nearby zip code. Rack pairs you with someone training the same day, the same lift, at a level you can actually keep up with.</p>
+    </div>
+    <div class="matching-grid reveal">
+      <div>
+        <p style="font-size:1.05rem; line-height:1.6; color:var(--dim); max-width:480px;">No more scrolling a directory of strangers. Rack looks at your split, your usual gym hours, and your current lifts, then surfaces the one or two people worth actually training with.</p>
+      </div>
+      <div class="matching-photo" style="background-image:url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80&auto=format&fit=crop');"></div>
+    </div>
+  </div>
+</section>
+
+<section class="feature photo-section overlay-teal-tint" id="trainers">
+  <div class="photo-bg" style="background-image:url('https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?w=1600&q=80&auto=format&fit=crop');"></div>
+  <div class="wrap">
+    <div class="feature-head reveal">
+      <div>
+        <span class="feature-tag mono">02 &mdash; TRAINERS</span>
+        <h2>Real trainers,<br>on the platform.</h2>
+      </div>
+      <p class="feature-desc">Book a certified trainer directly in Rack. No third-party booking app, no separate account &mdash; your sessions live next to your workouts.</p>
+    </div>
+    <div class="trainer-grid reveal">
+      <div class="trainer-copy">
+        <h2 style="font-size:1.8rem;">Every session, one tap away.</h2>
+        <p style="color:var(--dim); margin-top:14px; line-height:1.6;">Filter by specialty, see real availability, and message your trainer before you ever step in the gym.</p>
+      </div>
+      <div class="trainer-card">
+        <span class="tag">AVAILABLE TODAY</span>
+        <h3>Strength &amp; conditioning</h3>
+        <p>45-min sessions &middot; on-platform messaging &middot; progress notes synced to your profile.</p>
+        <a href="#join" class="book-btn">Book a session</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feature streak-section photo-section overlay-orange-tint" id="streaks">
+  <div class="photo-bg" style="background-image:url('https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=1600&q=80&auto=format&fit=crop');"></div>
+  <div class="blob" style="width:220px; height:220px; background:var(--teal-light); bottom:8%; left:4%;"></div>
+  <div class="wrap">
+    <div class="feature-head reveal">
+      <div>
+        <span class="feature-tag mono">03 &mdash; STREAKS</span>
+        <h2>30 days in.<br>One session free.</h2>
+      </div>
+      <p class="feature-desc">Hit a 30-day workout streak and Rack covers a free session with one of our trainers. Consistency pays &mdash; literally.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="streak-status" id="streakStatus">DAY 00 / 30</div>
+      <div class="streak-row" id="streakRow"></div>
+      <span class="streak-badge" id="streakBadge">FREE SESSION UNLOCKED</span>
+    </div>
+  </div>
+</section>
+
+<section class="feature" id="guarantee">
+  <div class="photo-strip" style="background-image:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=80&auto=format&fit=crop');"></div>
+  <div class="wrap">
+    <div class="feature-head reveal">
+      <div>
+        <span class="feature-tag mono">04 &mdash; GUARANTEE</span>
+        <h2>No request<br>goes quiet.</h2>
+      </div>
+      <p class="feature-desc">Every buddy request and trainer request gets a response &mdash; guaranteed. If a match doesn't answer in time, Rack finds you another one automatically.</p>
+    </div>
+    <div class="guarantee-grid reveal">
+      <div class="guarantee-card">
+        <span class="num mono">A</span>
+        <h3>You send a request</h3>
+        <p>To a buddy or a trainer, for a specific day and time.</p>
+      </div>
+      <div class="guarantee-card">
+        <span class="num mono">B</span>
+        <h3>A timer starts</h3>
+        <p>If there's no response in the window, Rack steps in.</p>
+      </div>
+      <div class="guarantee-card">
+        <span class="num mono">C</span>
+        <h3>You get a match anyway</h3>
+        <p>An alternate buddy or trainer, automatically offered.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feature photo-section overlay-light" id="premium">
+  <div class="photo-bg" style="background-image:url('https://images.unsplash.com/photo-1550345332-09e3ac987658?w=1600&q=80&auto=format&fit=crop');"></div>
+  <div class="wrap">
+    <div class="feature-head reveal">
+      <div>
+        <span class="premium-badge">PREMIUM</span>
+        <h2>Training that<br>knows what phase you're in.</h2>
+      </div>
+      <p class="feature-desc">Built on periodization principles from trainer notes and strength literature &mdash; Rack tells you when to push weight and when to hold.</p>
+    </div>
+    <div class="phase-track reveal">
+      <div class="phase">
+        <span class="mono">PHASE 1</span>
+        <h4>Loading</h4>
+        <p>Volume climbs. Rack flags when you're ready to add weight.</p>
+      </div>
+      <div class="phase">
+        <span class="mono">PHASE 2</span>
+        <h4>Maintenance</h4>
+        <p>Hold steady. Recovery signals take priority over PRs.</p>
+      </div>
+      <div class="phase">
+        <span class="mono">PHASE 3</span>
+        <h4>Peak</h4>
+        <p>Intensity peaks toward a target date or event.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta photo-section overlay-orange-tint" id="join">
+  <div class="photo-bg" style="background-image:url('https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=1600&q=80&auto=format&fit=crop');"></div>
+  <div class="wrap">
+    <h2>Your next set<br>starts with somebody.</h2>
+    <a href="#" class="btn-primary">Get early access</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo">RACK<span>.</span></div>
+    <div>&copy; 2026 Rack. Built for people who show up.</div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in-view');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+
+  const streakRow = document.getElementById('streakRow');
+  const streakStatus = document.getElementById('streakStatus');
+  const streakBadge = document.getElementById('streakBadge');
+  const TOTAL = 30;
+  for(let i=0;i<TOTAL;i++){
+    const d = document.createElement('div');
+    d.className='streak-dot';
+    streakRow.appendChild(d);
+  }
+  const dots = streakRow.querySelectorAll('.streak-dot');
+  let animated = false;
+  const streakSection = document.querySelector('#streaks');
+  const streakIO = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting && !animated){
+        animated = true;
+        let day = 0;
+        const interval = setInterval(()=>{
+          if(day >= TOTAL){
+            clearInterval(interval);
+            streakBadge.classList.add('show');
+            return;
+          }
+          dots[day].classList.add('filled');
+          day++;
+          streakStatus.textContent = 'DAY ' + String(day).padStart(2,'0') + ' / 30';
+        }, 45);
+      }
+    });
+  }, {threshold:0.4});
+  streakIO.observe(streakSection);
+</script>
+
+</body>
+</html>
