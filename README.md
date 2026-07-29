@@ -4,16 +4,17 @@ Landing page for **Rack**, a gym-buddy matching and training platform.
 
 ## The idea
 
-- **Buddy matching** — pair users by schedule, split, and lift level, not just location.
-- **Trainers on-platform** — book a session, message, and sync progress notes without a third-party app.
-- **Trainer dashboard** (planned) — trainers log client workouts, trend metrics over time, get an app-generated consistency score, and are prompted when a client is at risk of dropping off.
-- **Streaks** — a 30-day workout streak unlocks a free trainer session.
-- **Response guarantee** — every buddy or trainer request gets an answer; if no one responds in time, Rack auto-offers an alternate match.
-- **Premium** — periodized training phases (loading / maintenance / peak), a buddy accountability score across multiple parameters, shared workout logging, and expanded visibility into other users and trainers nearby.
+- **Buddy matching** — pair users by workout style, fitness level, goal, and training times, not just location.
+- **Live gym map** — flip "looking for a buddy" on, browse gyms on a map, and raise your hand at one.
+- **Trainers on-platform** — certified trainers list specialty, rate, and availability; members send a session request and get a tick or a cross back.
+- **Streaks** — a 30-day workout streak unlocks a free trainer session; two streak freezes cover a missed day.
+- **Groups & leaderboards** — every gym gets an auto-created group (plus custom ones); a transparent engagement score (streak, weekly sessions, volume, consistency, tenure) ranks members with a visible point breakdown.
+- **Shared workout logging** — log sets against 300+ curated exercises (with form videos) or custom ones, then push the entry to your training partner's log.
+- **Planned** — a trainer-facing client dashboard with progress trends and at-risk/consistency alerts, and expanded premium visibility into other users and trainers nearby.
 
 ## Status
 
-This repo currently contains the marketing landing page only (`index.html`). The matching engine, trainer dashboard, and scoring system are not yet built.
+This repo is the marketing landing page (`index.html`) for **Rack**. The product itself is being built as a separate React Native / Expo + Supabase app (currently a UI-only prototype on mock data — matching, map, streaks, trainer requests, groups/leaderboards, and workout logging are all functional in that prototype; a trainer client-management dashboard is not yet built).
 
 ## Running locally
 

@@ -12,7 +12,7 @@
     --chalk: #FBF8F2;
     --chalk-2: #F1ECE0;
     --card: #FFFFFF;
-    --dim: #7A7266;
+    --dim: #5C5548;
     --orange: #FF5A1F;
     --teal: #2E7D7D;
     --teal-light: #4FA6A6;
@@ -91,15 +91,15 @@
   .photo-section .wrap{position:relative; z-index:2;}
   .overlay-light::before{
     content:""; position:absolute; inset:0; z-index:1;
-    background:linear-gradient(180deg, rgba(251,248,242,0.65), rgba(251,248,242,0.93));
+    background:linear-gradient(180deg, rgba(251,248,242,0.88), rgba(251,248,242,0.97));
   }
   .overlay-orange-tint::before{
     content:""; position:absolute; inset:0; z-index:1;
-    background:linear-gradient(160deg, rgba(251,248,242,0.55), rgba(255,90,31,0.16) 55%, rgba(251,248,242,0.92));
+    background:linear-gradient(160deg, rgba(251,248,242,0.86), rgba(255,90,31,0.14) 55%, rgba(251,248,242,0.96));
   }
   .overlay-teal-tint::before{
     content:""; position:absolute; inset:0; z-index:1;
-    background:linear-gradient(160deg, rgba(251,248,242,0.6), rgba(46,125,125,0.18) 55%, rgba(251,248,242,0.93));
+    background:linear-gradient(160deg, rgba(251,248,242,0.88), rgba(46,125,125,0.14) 55%, rgba(251,248,242,0.96));
   }
 
   .blob{
@@ -139,13 +139,13 @@
   }
   .btn-primary:hover{transform:translateY(-3px); box-shadow:0 10px 24px rgba(255,90,31,0.35);}
   .btn-ghost{
-    background:rgba(255,255,255,0.5); color:var(--ink); padding:16px 30px;
+    background:rgba(255,255,255,0.85); color:var(--ink); padding:16px 30px;
     font-weight:600; border:1px solid var(--line); border-radius:2px; font-size:1rem;
     cursor:pointer; text-decoration:none; display:inline-block;
     transition:border-color 0.15s ease, background 0.15s ease;
     backdrop-filter:blur(4px);
   }
-  .btn-ghost:hover{border-color:var(--ink); background:rgba(255,255,255,0.8);}
+  .btn-ghost:hover{border-color:var(--ink); background:rgba(255,255,255,0.95);}
 
   .match-demo{
     margin-top:64px;
@@ -327,8 +327,8 @@
       <li><a href="#matching">Matching</a></li>
       <li><a href="#trainers">Trainers</a></li>
       <li><a href="#streaks">Streaks</a></li>
-      <li><a href="#guarantee">Guarantee</a></li>
-      <li><a href="#premium">Premium</a></li>
+      <li><a href="#groups">Groups</a></li>
+      <li><a href="#logging">Logging</a></li>
     </ul>
     <a href="#join" class="nav-cta">Get early access</a>
   </div>
@@ -340,7 +340,7 @@
   <div class="wrap">
     <span class="eyebrow mono">// GYM BUDDY MATCHING</span>
     <h1>Never skip<br>a set <em>alone</em>.</h1>
-    <p class="sub">Rack matches you with a workout partner who actually shows up, connects you to real trainers on the platform, and rewards the streak you're building &mdash; not the one you gave up on.</p>
+    <p class="sub">Rack matches you with a workout partner by split, schedule, and level, shows you who's training nearby on a live gym map, and rewards the streak you're building &mdash; not the one you gave up on.</p>
     <div class="hero-ctas">
       <a href="#join" class="btn-primary">Get early access</a>
       <a href="#matching" class="btn-ghost">See how matching works</a>
@@ -373,11 +373,11 @@
         <span class="feature-tag mono">01 &mdash; MATCHING</span>
         <h2>Matched on the<br>metrics that matter.</h2>
       </div>
-      <p class="feature-desc">Schedule, split, and pace &mdash; not just a nearby zip code. Rack pairs you with someone training the same day, the same lift, at a level you can actually keep up with.</p>
+      <p class="feature-desc">Workout style, fitness level, goal, and training times &mdash; not just a nearby zip code. Set your preferences once and Rack surfaces people worth actually training with.</p>
     </div>
     <div class="matching-grid reveal">
       <div>
-        <p style="font-size:1.05rem; line-height:1.6; color:var(--dim); max-width:480px;">No more scrolling a directory of strangers. Rack looks at your split, your usual gym hours, and your current lifts, then surfaces the one or two people worth actually training with.</p>
+        <p style="font-size:1.05rem; line-height:1.6; color:var(--dim); max-width:480px;">Flip &ldquo;Looking for a buddy&rdquo; on, browse gyms on the map, and raise your hand at one &mdash; everyone else looking there sees it instantly. No more scrolling a directory of strangers.</p>
       </div>
       <div class="matching-photo" style="background-image:url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80&auto=format&fit=crop');"></div>
     </div>
@@ -392,18 +392,18 @@
         <span class="feature-tag mono">02 &mdash; TRAINERS</span>
         <h2>Real trainers,<br>on the platform.</h2>
       </div>
-      <p class="feature-desc">Book a certified trainer directly in Rack. No third-party booking app, no separate account &mdash; your sessions live next to your workouts.</p>
+      <p class="feature-desc">Certified trainers set their specialty, rate, and availability right in Rack. Send a session request and get a tick or a cross back &mdash; no third-party booking app.</p>
     </div>
     <div class="trainer-grid reveal">
       <div class="trainer-copy">
-        <h2 style="font-size:1.8rem;">Every session, one tap away.</h2>
-        <p style="color:var(--dim); margin-top:14px; line-height:1.6;">Filter by specialty, see real availability, and message your trainer before you ever step in the gym.</p>
+        <h2 style="font-size:1.8rem;">Every session, one request away.</h2>
+        <p style="color:var(--dim); margin-top:14px; line-height:1.6;">Filter by specialty, see real availability, and message your trainer before you ever step in the gym. They accept, you're booked.</p>
       </div>
       <div class="trainer-card">
-        <span class="tag">AVAILABLE TODAY</span>
+        <span class="tag">CERTIFIED</span>
         <h3>Strength &amp; conditioning</h3>
-        <p>45-min sessions &middot; on-platform messaging &middot; progress notes synced to your profile.</p>
-        <a href="#join" class="book-btn">Book a session</a>
+        <p>1:1 sessions &middot; on-platform messaging &middot; feedback and ratings synced to their profile.</p>
+        <a href="#join" class="book-btn">Send a session request</a>
       </div>
     </div>
   </div>
@@ -418,7 +418,7 @@
         <span class="feature-tag mono">03 &mdash; STREAKS</span>
         <h2>30 days in.<br>One session free.</h2>
       </div>
-      <p class="feature-desc">Hit a 30-day workout streak and Rack covers a free session with one of our trainers. Consistency pays &mdash; literally.</p>
+      <p class="feature-desc">Hit a 30-day workout streak and Rack covers a free session with one of our trainers. Miss a day? Spend one of two streak freezes instead of losing it all.</p>
     </div>
 
     <div class="reveal">
@@ -429,61 +429,61 @@
   </div>
 </section>
 
-<section class="feature" id="guarantee">
+<section class="feature" id="groups">
   <div class="photo-strip" style="background-image:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=80&auto=format&fit=crop');"></div>
   <div class="wrap">
     <div class="feature-head reveal">
       <div>
-        <span class="feature-tag mono">04 &mdash; GUARANTEE</span>
-        <h2>No request<br>goes quiet.</h2>
+        <span class="feature-tag mono">04 &mdash; GROUPS</span>
+        <h2>Every gym has<br>a leaderboard.</h2>
       </div>
-      <p class="feature-desc">Every buddy request and trainer request gets a response &mdash; guaranteed. If a match doesn't answer in time, Rack finds you another one automatically.</p>
+      <p class="feature-desc">Join your gym's group or start one with friends. Rack ranks everyone on a transparent engagement score &mdash; streak, weekly sessions, monthly volume, consistency, and tenure.</p>
     </div>
     <div class="guarantee-grid reveal">
       <div class="guarantee-card">
-        <span class="num mono">A</span>
-        <h3>You send a request</h3>
-        <p>To a buddy or a trainer, for a specific day and time.</p>
+        <span class="num mono">1</span>
+        <h3>Join a group</h3>
+        <p>Your gym's group is auto-created &mdash; join in one tap, or start a custom one and invite friends.</p>
       </div>
       <div class="guarantee-card">
-        <span class="num mono">B</span>
-        <h3>A timer starts</h3>
-        <p>If there's no response in the window, Rack steps in.</p>
+        <span class="num mono">2</span>
+        <h3>Score updates live</h3>
+        <p>Streak days, sessions this week, 30-day volume, consistency, and tenure &mdash; each with its own weight.</p>
       </div>
       <div class="guarantee-card">
-        <span class="num mono">C</span>
-        <h3>You get a match anyway</h3>
-        <p>An alternate buddy or trainer, automatically offered.</p>
+        <span class="num mono">3</span>
+        <h3>See exactly why</h3>
+        <p>Every rank shows its point breakdown. No black-box leaderboard.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="feature photo-section overlay-light" id="premium">
+<section class="feature photo-section overlay-light" id="logging">
   <div class="photo-bg" style="background-image:url('https://images.unsplash.com/photo-1550345332-09e3ac987658?w=1600&q=80&auto=format&fit=crop');"></div>
   <div class="wrap">
     <div class="feature-head reveal">
       <div>
-        <span class="premium-badge">PREMIUM</span>
-        <h2>Training that<br>knows what phase you're in.</h2>
+        <span class="premium-badge">LOG TOGETHER</span>
+        <h2>Log it once.<br>Share it with your partner.</h2>
       </div>
-      <p class="feature-desc">Built on periodization principles from trainer notes and strength literature &mdash; Rack tells you when to push weight and when to hold.</p>
+      <p class="feature-desc">Pick from 300+ curated exercises with form videos, or add your own. Log sets, reps, and weight mid-workout, then push the entry straight to your training partner's log.</p>
     </div>
     <div class="phase-track reveal">
       <div class="phase">
-        <span class="mono">PHASE 1</span>
-        <h4>Loading</h4>
-        <p>Volume climbs. Rack flags when you're ready to add weight.</p>
+        <span class="mono">STEP 1</span>
+        <h4>Pick</h4>
+        <p>Reps + weight, reps only, timed holds, or duration + distance &mdash; Rack tracks the right metrics for the movement.</p>
       </div>
       <div class="phase">
-        <span class="mono">PHASE 2</span>
-        <h4>Maintenance</h4>
-        <p>Hold steady. Recovery signals take priority over PRs.</p>
+        <span class="mono">STEP 2</span>
+        <h4>Log</h4>
+        <p>Track sets as you go, mid-workout, right from your phone.</p>
       </div>
       <div class="phase">
-        <span class="mono">PHASE 3</span>
-        <h4>Peak</h4>
-        <p>Intensity peaks toward a target date or event.</p>
+        <span class="mono">STEP 3</span>
+        <h4>Share</h4>
+        <p>Push the finished entry to whoever you trained with &mdash; it lands straight in their log too.</p>
       </div>
     </div>
   </div>
