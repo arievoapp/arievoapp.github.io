@@ -289,7 +289,7 @@
     .guarantee-grid{grid-template-columns:1fr;}
   }
 
-  /* PERIODIZATION / PREMIUM */
+  /* LOGGING STEPS */
   .phase-track{
     display:flex; border-radius:6px; overflow:hidden; margin-top:44px; border:1px solid var(--line);
     background:rgba(255,255,255,0.75); backdrop-filter:blur(6px);
@@ -309,6 +309,48 @@
     .phase-track{flex-direction:column;}
     .phase:not(:last-child){border-right:none; border-bottom:1px solid var(--line);}
   }
+
+  /* PREMIUM PLANS */
+  .pricing-grid{
+    display:grid; grid-template-columns:1fr 1.1fr; gap:24px; margin-top:44px; align-items:start;
+  }
+  .plan-card{
+    border:1px solid var(--line); border-radius:8px; padding:32px 28px;
+    background:var(--card); position:relative;
+  }
+  .plan-card.premium{
+    border-color:var(--orange);
+    background:linear-gradient(180deg, rgba(255,90,31,0.06), #FFFFFF 220px);
+    box-shadow:0 18px 40px rgba(255,90,31,0.14);
+  }
+  .plan-badge{
+    position:absolute; top:-13px; right:26px; background:var(--orange); color:#fff;
+    font-size:0.7rem; font-weight:700; padding:5px 12px; border-radius:2px; letter-spacing:0.04em;
+  }
+  .plan-name{font-family:'Anton', sans-serif; text-transform:uppercase; font-size:1.5rem; color:var(--ink);}
+  .plan-tagline{color:var(--dim); font-size:0.88rem; margin:8px 0 22px; line-height:1.4;}
+  .plan-card ul{list-style:none; display:flex; flex-direction:column; gap:13px;}
+  .plan-card li{
+    font-size:0.92rem; color:var(--ink); padding-left:24px; position:relative; line-height:1.45;
+  }
+  .plan-card li::before{
+    content:"\2192"; position:absolute; left:0; color:var(--dim); font-weight:600;
+  }
+  .plan-card.premium li::before{content:"\2605"; color:var(--orange);}
+  .plan-card .btn-primary{margin-top:26px;}
+  @media (max-width:800px){
+    .pricing-grid{grid-template-columns:1fr;}
+  }
+
+  .trainer-premium-card{
+    margin-top:28px; border:1px solid var(--teal); border-radius:8px; padding:30px 28px;
+    background:rgba(46,125,125,0.06);
+  }
+  .trainer-premium-card h3{
+    font-family:'Work Sans'; text-transform:none; font-weight:700; font-size:1.2rem;
+    letter-spacing:0; margin-top:8px; color:var(--ink);
+  }
+  .trainer-premium-card p{color:var(--dim); margin-top:10px; line-height:1.6; max-width:640px; font-size:0.95rem;}
 
   /* CTA / FOOTER */
   .final-cta{
@@ -334,6 +376,7 @@
       <li><a href="#streaks">Streaks</a></li>
       <li><a href="#groups">Groups</a></li>
       <li><a href="#logging">Logging</a></li>
+      <li><a href="#premium">Premium</a></li>
     </ul>
     <a href="#join" class="nav-cta">Get early access</a>
   </div>
@@ -494,10 +537,59 @@
   </div>
 </section>
 
+<section class="feature" id="premium">
+  <div class="wrap">
+    <div class="feature-head reveal">
+      <div>
+        <span class="feature-tag mono">06 &mdash; PREMIUM</span>
+        <h2>Go all in<br>on yourself.</h2>
+      </div>
+      <p class="feature-desc">You focus on becoming a better version of yourself &mdash; we bring the early access, the priority, and the rewards.</p>
+    </div>
+
+    <div class="pricing-grid reveal">
+      <div class="plan-card">
+        <div class="plan-name">Free</div>
+        <p class="plan-tagline">Everything you need to start training with someone.</p>
+        <ul>
+          <li>Buddy search &amp; send requests</li>
+          <li>Log your regular workout sets</li>
+          <li>Limited challenge participation</li>
+          <li>No streak freezes</li>
+        </ul>
+      </div>
+      <div class="plan-card premium">
+        <span class="plan-badge">PREMIUM</span>
+        <div class="plan-name">Premium</div>
+        <p class="plan-tagline">For the ones who never miss a session.</p>
+        <ul>
+          <li>Early visibility &mdash; see who's around before anyone else</li>
+          <li>Send buddy requests 24 hours before regular members</li>
+          <li>Early, priority visibility into trainers nearby</li>
+          <li>Buddy accountability score, tracked over time</li>
+          <li>City-wide challenges across other gyms</li>
+          <li>Early access to reserve slots</li>
+          <li>In-depth training analysis</li>
+          <li>In-app nudges to keep you on track</li>
+          <li>Rewards on every streak you complete</li>
+        </ul>
+        <a href="#join" class="btn-primary">Go Premium</a>
+      </div>
+    </div>
+
+    <div class="trainer-premium-card reveal">
+      <span class="feature-tag mono" style="color:var(--teal);">FOR TRAINERS</span>
+      <h3>Every client, fully tracked.</h3>
+      <p>Trainers who enroll get every metric needed to record a client's progress logged automatically, in-depth graphical trend analysis session over session, and the ability to post their own updates straight to the platform.</p>
+    </div>
+  </div>
+</section>
+
 <section class="final-cta photo-section overlay-orange-tint" id="join">
   <div class="photo-bg" style="background-image:url('https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=1600&q=80&auto=format&fit=crop');"></div>
   <div class="wrap">
     <h2>Your next set<br>starts with somebody.</h2>
+    <p style="color:#544d43; font-size:1.15rem; max-width:520px; margin:0 auto 32px; line-height:1.5;">A healthier lifestyle is easier to keep &mdash; together.</p>
     <a href="#" class="btn-primary">Get early access</a>
   </div>
 </section>

@@ -10,7 +10,12 @@ Landing page for **Arievo**, a gym-buddy matching and training platform.
 - **Streaks** — a 30-day workout streak unlocks a free trainer session; two streak freezes cover a missed day.
 - **Groups & leaderboards** — every gym gets an auto-created group (plus custom ones); a transparent engagement score (streak, weekly sessions, volume, consistency, tenure) ranks members with a visible point breakdown.
 - **Shared workout logging** — log sets against 300+ curated exercises (with form videos) or custom ones, then push the entry to your training partner's log.
-- **Planned** — a trainer-facing client dashboard with progress trends and at-risk/consistency alerts, and expanded premium visibility into other users and trainers nearby.
+- **Free vs. Premium** — free members get buddy search/requests, regular logging, limited challenge participation, and no streak freezes. Premium members get early visibility into buddies and trainers, a 24-hour head start on sending requests, buddy accountability scores, city-wide gym challenges, early slot reservations, in-depth training analysis, in-app nudges, and streak-completion rewards. Premium trainers get full client progress logging, in-depth graphical trend analysis, and the ability to post their own updates.
+- **Planned** — a trainer-facing client dashboard with progress trends and at-risk/consistency alerts.
+
+## Mission
+
+Promote a healthier lifestyle — together with a buddy, not alone.
 
 ## Status
 
