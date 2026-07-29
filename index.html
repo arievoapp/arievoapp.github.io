@@ -311,6 +311,13 @@
   }
 
   /* PREMIUM PLANS */
+  .shared-strip{
+    display:flex; gap:32px; flex-wrap:wrap; margin-top:36px;
+  }
+  .shared-strip .item{
+    display:flex; align-items:center; gap:10px; font-size:0.92rem; color:var(--ink); font-weight:600;
+  }
+  .shared-strip .item::before{content:"\2713"; color:var(--teal); font-weight:700;}
   .pricing-grid{
     display:grid; grid-template-columns:1fr 1.1fr; gap:24px; margin-top:44px; align-items:start;
   }
@@ -352,6 +359,36 @@
   }
   .trainer-premium-card p{color:var(--dim); margin-top:10px; line-height:1.6; max-width:640px; font-size:0.95rem;}
 
+  /* FEEDBACK */
+  .feedback-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:48px; margin-top:44px; align-items:start;}
+  .feedback-line{font-size:1.4rem; color:var(--ink); font-weight:700; line-height:1.4;}
+  .feedback-line span{color:var(--orange);}
+  .feedback-form{
+    background:var(--card); border:1px solid var(--line); border-radius:8px; padding:32px;
+  }
+  .feedback-form .field{margin-bottom:20px;}
+  .feedback-form label{
+    display:block; font-size:0.8rem; font-weight:600; color:var(--ink); margin-bottom:8px;
+  }
+  .feedback-form input, .feedback-form textarea, .feedback-form select{
+    width:100%; padding:12px 14px; border:1px solid var(--line); border-radius:4px;
+    font-family:'Work Sans', sans-serif; font-size:0.95rem; color:var(--ink); background:var(--chalk);
+    resize:vertical;
+  }
+  .feedback-form input:focus, .feedback-form textarea:focus, .feedback-form select:focus{
+    outline:2px solid var(--orange); outline-offset:1px;
+  }
+  .feedback-form textarea{min-height:110px;}
+  .feedback-form button{width:100%;}
+  .feedback-thanks{
+    text-align:center; padding:40px 20px;
+  }
+  .feedback-thanks .big{font-family:'Anton', sans-serif; text-transform:uppercase; font-size:1.6rem; color:var(--ink); margin-bottom:10px;}
+  .feedback-thanks p{color:var(--dim); font-size:0.95rem;}
+  @media (max-width:800px){
+    .feedback-grid{grid-template-columns:1fr;}
+  }
+
   /* CTA / FOOTER */
   .final-cta{
     text-align:center; padding:140px 0 120px;
@@ -377,6 +414,7 @@
       <li><a href="#groups">Groups</a></li>
       <li><a href="#logging">Logging</a></li>
       <li><a href="#premium">Premium</a></li>
+      <li><a href="#feedback">Feedback</a></li>
     </ul>
     <a href="#join" class="nav-cta">Get early access</a>
   </div>
@@ -547,6 +585,11 @@
       <p class="feature-desc">You focus on becoming a better version of yourself &mdash; we bring the early access, the priority, and the rewards.</p>
     </div>
 
+    <div class="shared-strip reveal">
+      <div class="item">Rate your buddy after every workout &mdash; it sharpens future matches</div>
+      <div class="item">Post your progress and celebrate every win</div>
+    </div>
+
     <div class="pricing-grid reveal">
       <div class="plan-card">
         <div class="plan-name">Free</div>
@@ -554,6 +597,8 @@
         <ul>
           <li>Buddy search &amp; send requests</li>
           <li>Log your regular workout sets</li>
+          <li>Rate buddies post-workout</li>
+          <li>Post progress &amp; celebrate wins</li>
           <li>Limited challenge participation</li>
           <li>No streak freezes</li>
         </ul>
@@ -566,6 +611,8 @@
           <li>Early visibility &mdash; see who's around before anyone else</li>
           <li>Send buddy requests 24 hours before regular members</li>
           <li>Early, priority visibility into trainers nearby</li>
+          <li>Rate buddies post-workout</li>
+          <li>Post progress &amp; celebrate wins</li>
           <li>Buddy accountability score, tracked over time</li>
           <li>City-wide challenges across other gyms</li>
           <li>Early access to reserve slots</li>
@@ -581,6 +628,51 @@
       <span class="feature-tag mono" style="color:var(--teal);">FOR TRAINERS</span>
       <h3>Every client, fully tracked.</h3>
       <p>Trainers who enroll get every metric needed to record a client's progress logged automatically, in-depth graphical trend analysis session over session, and the ability to post their own updates straight to the platform.</p>
+    </div>
+  </div>
+</section>
+
+<section class="feature" id="feedback">
+  <div class="wrap">
+    <div class="feature-head reveal">
+      <div>
+        <span class="feature-tag mono">07 &mdash; FEEDBACK</span>
+        <h2>You say.<br>We listen.</h2>
+      </div>
+      <p class="feature-desc">Arievo is built from the gym floor up. Every feedback is accounted for &mdash; tell us what's missing, what's broken, or what we got right.</p>
+    </div>
+
+    <div class="feedback-grid reveal">
+      <div class="feedback-line">
+        You say <span>&ldquo;this is missing.&rdquo;</span><br>
+        We say <span>&ldquo;noted, building it.&rdquo;</span><br>
+        That's the whole loop.
+      </div>
+
+      <form class="feedback-form" id="feedbackForm">
+        <div class="field">
+          <label for="fbName">Name</label>
+          <input type="text" id="fbName" name="name" placeholder="Your name" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="fbEmail">Email</label>
+          <input type="email" id="fbEmail" name="email" placeholder="you@example.com" autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="fbType">What's this about?</label>
+          <select id="fbType" name="type">
+            <option>A bug I ran into</option>
+            <option>A feature I want</option>
+            <option>Something I love</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="fbMessage">Your feedback</label>
+          <textarea id="fbMessage" name="message" placeholder="Tell us what's on your mind" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Send feedback</button>
+      </form>
     </div>
   </div>
 </section>
@@ -644,6 +736,13 @@
     });
   }, {threshold:0.4});
   streakIO.observe(streakSection);
+
+  // No backend wired up yet -- this just confirms receipt client-side.
+  const feedbackForm = document.getElementById('feedbackForm');
+  feedbackForm.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    feedbackForm.innerHTML = '<div class="feedback-thanks"><div class="big">Got it.</div><p>Thanks for the feedback &mdash; it goes straight into the pile we build from.</p></div>';
+  });
 </script>
 
 </body>
