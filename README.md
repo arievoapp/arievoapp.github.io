@@ -1,4 +1,4 @@
-# Arievo — Never Skip Alone
+# Arievo — Workout Together, Grow Together
 
 Landing page for **Arievo**, a gym-buddy matching and training platform.
 
@@ -17,7 +17,7 @@ Landing page for **Arievo**, a gym-buddy matching and training platform.
 
 ## Mission
 
-Promote a healthier lifestyle — together with a buddy, not alone.
+Workout together, grow together — a healthier lifestyle is easier to keep with a buddy.
 
 ## Status
 
