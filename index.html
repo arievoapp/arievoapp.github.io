@@ -206,6 +206,12 @@
   .reveal.in-view{opacity:1; transform:translateY(0);}
 
   /* MATCHING SECTION w/ side photo */
+  .activity-chips{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:20px;}
+  .chip{
+    display:inline-block; background:var(--chalk-2); border:1px solid var(--line);
+    color:var(--ink); font-size:0.82rem; font-weight:600; padding:8px 16px; border-radius:20px;
+  }
+  .activity-note{color:var(--dim); font-size:0.95rem; margin-bottom:32px; max-width:480px;}
   .matching-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center;}
   .matching-photo{
     border-radius:8px; overflow:hidden; aspect-ratio:4/5; background-size:cover; background-position:center;
@@ -425,7 +431,7 @@
   <div class="wrap">
     <span class="eyebrow mono">// VERIFIED GYM BUDDIES</span>
     <h1>Workout together.<br>Grow <em>together</em>.</h1>
-    <p class="sub">Arievo matches you with an identity-verified workout partner by split, schedule, and level, shows you who's training nearby on a live gym map, and rewards the streak you're building &mdash; not the one you gave up on.</p>
+    <p class="sub">Lifting, running, CrossFit, yoga, boxing, or just trying to move more &mdash; Arievo matches you with an identity-verified partner training the same way, shows you who's nearby on a live gym map, and rewards the streak you're building. However you train, you belong here.</p>
     <div class="hero-ctas">
       <a href="#join" class="btn-primary">Get early access</a>
       <a href="#matching" class="btn-ghost">See how matching works</a>
@@ -435,7 +441,7 @@
       <div class="buddy-card">
         <div class="avatar" style="background-image:url('https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&q=80&auto=format&fit=crop');"></div>
         <div class="name">You <span class="verified-badge" title="Verified identity">&#10003;</span></div>
-        <div class="meta mono">6PM &middot; Push day</div>
+        <div class="meta mono">6PM &middot; Training together</div>
       </div>
       <div class="pulse-line">
         <svg viewBox="0 0 200 40" preserveAspectRatio="none">
@@ -445,7 +451,7 @@
       <div class="buddy-card">
         <div class="avatar" style="background-image:url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80&auto=format&fit=crop');"></div>
         <div class="name">Jordan <span class="verified-badge" title="Verified identity">&#10003;</span></div>
-        <div class="meta mono">6PM &middot; Push day</div>
+        <div class="meta mono">6PM &middot; Training together</div>
       </div>
     </div>
   </div>
@@ -460,6 +466,18 @@
       </div>
       <p class="feature-desc">Preferences, fitness level, location, workout interests, and schedule &mdash; not just a nearby zip code. Every buddy is identity-verified, so you know exactly who's showing up.</p>
     </div>
+    <div class="activity-chips reveal">
+      <span class="chip">Weightlifting &amp; Powerlifting</span>
+      <span class="chip">CrossFit &amp; HIIT</span>
+      <span class="chip">Running &amp; Cardio</span>
+      <span class="chip">Yoga &amp; Pilates</span>
+      <span class="chip">Boxing</span>
+      <span class="chip">Climbing</span>
+      <span class="chip">Calisthenics</span>
+      <span class="chip">Weight Loss</span>
+      <span class="chip">Event Training &mdash; Races &amp; Triathlons</span>
+    </div>
+    <p class="activity-note reveal">However you train, whatever you're working toward &mdash; there's someone on Arievo doing it too.</p>
     <div class="matching-grid reveal">
       <div>
         <p style="font-size:1.05rem; line-height:1.6; color:var(--dim); max-width:480px;">Flip &ldquo;Looking for a buddy&rdquo; on, browse gyms on the map, and raise your hand at one &mdash; everyone else looking there sees it instantly, verified badge and all. No more scrolling a directory of strangers.</p>
@@ -483,7 +501,7 @@
     <div class="trainer-grid reveal">
       <div class="trainer-copy">
         <h2 style="font-size:1.8rem;">Every session, one request away.</h2>
-        <p style="color:var(--dim); margin-top:14px; line-height:1.6;">Filter by specialty, see real availability, and message your trainer before you ever step in the gym. No exclusive contracts &mdash; book one session or many, whenever a certified coach is free. They accept, you're booked.</p>
+        <p style="color:var(--dim); margin-top:14px; line-height:1.6;">Strength, running, CrossFit, yoga, boxing, weight loss &mdash; filter by specialty, see real availability, and message your trainer before you ever step in the gym. No exclusive contracts &mdash; book one session or many, whenever a certified coach is free. They accept, you're booked.</p>
       </div>
       <div class="trainer-card">
         <span class="tag">100% CERTIFIED</span>
@@ -742,7 +760,7 @@
 <section class="final-cta photo-section overlay-orange-tint" id="join">
   <div class="photo-bg" style="background-image:url('https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=1600&q=80&auto=format&fit=crop');"></div>
   <div class="wrap">
-    <h2>Your next set<br>starts with somebody.</h2>
+    <h2>Your next workout<br>starts with somebody.</h2>
     <p style="color:#544d43; font-size:1.15rem; max-width:520px; margin:0 auto 32px; line-height:1.5;">A healthier lifestyle is easier to keep &mdash; together.</p>
     <a href="#" class="btn-primary">Get early access</a>
   </div>
