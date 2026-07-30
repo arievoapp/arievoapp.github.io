@@ -4,7 +4,7 @@ Landing page for **Arievo**, a gym-buddy matching and training platform.
 
 ## The idea
 
-- **Buddy matching** — pair identity-verified users by workout style, fitness level, goal, and training times, not just location.
+- **Buddy matching** — pair identity-verified users by preferences, fitness level, location, workout interests, and schedule, not just a nearby zip code. Premium adds phase-based matching (loading / maintenance / deload) for serious lifters.
 - **Live gym map** — flip "looking for a buddy" on, browse gyms on a map, and raise your hand at one.
 - **100% certified trainers** — every trainer is verified before appearing in search; members send a session request and get a tick or a cross back. No exclusive contracts — book a single 1:1 session with any available coach without committing to a full training plan.
 - **Streaks** — a 30-day workout streak unlocks a free trainer session; two streak freezes cover a missed day.
