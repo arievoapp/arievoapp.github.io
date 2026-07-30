@@ -311,43 +311,42 @@
   }
 
   /* PREMIUM PLANS */
-  .shared-strip{
-    display:flex; gap:32px; flex-wrap:wrap; margin-top:36px;
+  .pricing-head{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;
+    margin-top:44px;
   }
-  .shared-strip .item{
-    display:flex; align-items:center; gap:10px; font-size:0.92rem; color:var(--ink); font-weight:600;
+  .pricing-price{
+    font-size:0.95rem; color:var(--dim);
   }
-  .shared-strip .item::before{content:"\2713"; color:var(--teal); font-weight:700;}
-  .pricing-grid{
-    display:grid; grid-template-columns:1fr 1.1fr; gap:24px; margin-top:44px; align-items:start;
+  .pricing-price strong{
+    font-family:'Anton', sans-serif; color:var(--ink); font-size:1.3rem; letter-spacing:0.01em;
   }
-  .plan-card{
-    border:1px solid var(--line); border-radius:8px; padding:32px 28px;
-    background:var(--card); position:relative;
+  .pricing-price .save{
+    color:var(--teal); font-weight:600; font-size:0.82rem; margin-left:6px;
   }
-  .plan-card.premium{
-    border-color:var(--orange);
-    background:linear-gradient(180deg, rgba(255,90,31,0.06), #FFFFFF 220px);
-    box-shadow:0 18px 40px rgba(255,90,31,0.14);
+  .pricing-table-wrap{
+    overflow-x:auto; margin-top:20px; border:1px solid var(--line); border-radius:8px;
   }
-  .plan-badge{
-    position:absolute; top:-13px; right:26px; background:var(--orange); color:#fff;
-    font-size:0.7rem; font-weight:700; padding:5px 12px; border-radius:2px; letter-spacing:0.04em;
+  .pricing-table{
+    width:100%; border-collapse:collapse; background:var(--card); min-width:640px;
   }
-  .plan-name{font-family:'Anton', sans-serif; text-transform:uppercase; font-size:1.5rem; color:var(--ink);}
-  .plan-tagline{color:var(--dim); font-size:0.88rem; margin:8px 0 22px; line-height:1.4;}
-  .plan-card ul{list-style:none; display:flex; flex-direction:column; gap:13px;}
-  .plan-card li{
-    font-size:0.92rem; color:var(--ink); padding-left:24px; position:relative; line-height:1.45;
+  .pricing-table th, .pricing-table td{
+    padding:15px 20px; text-align:left; border-bottom:1px solid var(--line); font-size:0.9rem;
   }
-  .plan-card li::before{
-    content:"\2192"; position:absolute; left:0; color:var(--dim); font-weight:600;
+  .pricing-table thead th{
+    background:var(--chalk-2); font-family:'Work Sans'; font-weight:700; color:var(--ink);
   }
-  .plan-card.premium li::before{content:"\2605"; color:var(--orange);}
-  .plan-card .btn-primary{margin-top:26px;}
-  @media (max-width:800px){
-    .pricing-grid{grid-template-columns:1fr;}
+  .pricing-table th.plan-col, .pricing-table td.plan-col{
+    text-align:center; width:150px;
   }
+  .pricing-table td.plan-col.premium-col{background:rgba(255,90,31,0.05);}
+  .pricing-table th.premium-col{background:rgba(255,90,31,0.14);}
+  .pricing-table tbody tr:last-child td{border-bottom:none;}
+  .pricing-table .yes{color:var(--teal); font-weight:700; font-size:1.1rem;}
+  .pricing-table .no{color:var(--dim); opacity:0.5; font-weight:700;}
+  .pricing-table .qual{font-size:0.85rem; color:var(--dim); font-weight:600;}
+  .pricing-table td.plan-col.premium-col .qual{color:var(--ink);}
+  .pricing-cta{text-align:center; margin-top:32px;}
 
   .trainer-premium-card{
     margin-top:28px; border:1px solid var(--teal); border-radius:8px; padding:30px 28px;
@@ -505,7 +504,7 @@
         <span class="feature-tag mono">03 &mdash; STREAKS</span>
         <h2>30 days in.<br>One session free.</h2>
       </div>
-      <p class="feature-desc">Hit a 30-day workout streak and Arievo covers a free session with one of our trainers. Miss a day? Spend one of two streak freezes instead of losing it all.</p>
+      <p class="feature-desc">Hit a 30-day workout streak and Arievo covers a free session with one of our trainers. Miss a day? Premium members can spend one of two streak freezes instead of losing it all.</p>
     </div>
 
     <div class="reveal">
@@ -586,44 +585,105 @@
       <p class="feature-desc">You focus on becoming a better version of yourself &mdash; we bring the early access, the priority, and the rewards.</p>
     </div>
 
-    <div class="shared-strip reveal">
-      <div class="item">Rate your buddy after every workout &mdash; it sharpens future matches</div>
-      <div class="item">Post your progress and celebrate every win</div>
+    <div class="pricing-head reveal">
+      <span class="feature-tag mono" style="color:var(--dim);">FREE &mdash; &pound;0</span>
+      <div class="pricing-price">
+        <strong>&pound;15</strong> / month &nbsp;or&nbsp; <strong>&pound;90</strong> / year
+        <span class="save">save 50% yearly</span>
+      </div>
     </div>
 
-    <div class="pricing-grid reveal">
-      <div class="plan-card">
-        <div class="plan-name">Free</div>
-        <p class="plan-tagline">Everything you need to start training with someone.</p>
-        <ul>
-          <li>Buddy search &amp; send requests</li>
-          <li>Log your regular workout sets</li>
-          <li>Rate buddies post-workout</li>
-          <li>Post progress &amp; celebrate wins</li>
-          <li>Limited challenge participation</li>
-          <li>No streak freezes</li>
-        </ul>
-      </div>
-      <div class="plan-card premium">
-        <span class="plan-badge">PREMIUM</span>
-        <div class="plan-name">Premium</div>
-        <p class="plan-tagline">For the ones who never miss a session.</p>
-        <ul>
-          <li>Phase-based matching &mdash; paired by training phase (loading / maintenance / deload)</li>
-          <li>Early visibility &mdash; see who's around before anyone else</li>
-          <li>Send buddy requests 24 hours before regular members</li>
-          <li>Early, priority visibility into trainers nearby</li>
-          <li>Rate buddies post-workout</li>
-          <li>Post progress &amp; celebrate wins</li>
-          <li>Buddy accountability score, tracked over time</li>
-          <li>City-wide challenges across other gyms</li>
-          <li>Early access to reserve slots</li>
-          <li>In-depth training analysis</li>
-          <li>In-app nudges to keep you on track</li>
-          <li>Rewards on every streak you complete</li>
-        </ul>
-        <a href="#join" class="btn-primary">Go Premium</a>
-      </div>
+    <div class="pricing-table-wrap reveal">
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th class="plan-col">Free</th>
+            <th class="plan-col premium-col">Premium</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Buddy matching (preferences, level, location, interests, schedule)</td>
+            <td class="plan-col"><span class="yes">&#10003;</span></td>
+            <td class="plan-col premium-col"><span class="yes">&#10003;</span></td>
+          </tr>
+          <tr>
+            <td>Phase-based matching (loading / maintenance / deload)</td>
+            <td class="plan-col"><span class="no">&mdash;</span></td>
+            <td class="plan-col premium-col"><span class="yes">&#10003;</span></td>
+          </tr>
+          <tr>
+            <td>Buddy &amp; trainer visibility</td>
+            <td class="plan-col"><span class="qual">Standard</span></td>
+            <td class="plan-col premium-col"><span class="qual">Early &amp; priority</span></td>
+          </tr>
+          <tr>
+            <td>Sending buddy requests</td>
+            <td class="plan-col"><span class="qual">Standard</span></td>
+            <td class="plan-col premium-col"><span class="qual">24h priority window</span></td>
+          </tr>
+          <tr>
+            <td>Trainer session requests</td>
+            <td class="plan-col"><span class="yes">&#10003;</span></td>
+            <td class="plan-col premium-col"><span class="yes">&#10003;</span></td>
+          </tr>
+          <tr>
+            <td>Shared workout logging</td>
+            <td class="plan-col"><span class="yes">&#10003;</span></td>
+            <td class="plan-col premium-col"><span class="yes">&#10003;</span></td>
+          </tr>
+          <tr>
+            <td>Post-workout buddy ratings</td>
+            <td class="plan-col"><span class="yes">&#10003;</span></td>
+            <td class="plan-col premium-col"><span class="yes">&#10003;</span></td>
+          </tr>
+          <tr>
+            <td>Post progress &amp; celebrate wins</td>
+            <td class="plan-col"><span class="yes">&#10003;</span></td>
+            <td class="plan-col premium-col"><span class="yes">&#10003;</span></td>
+          </tr>
+          <tr>
+            <td>Buddy accountability score</td>
+            <td class="plan-col"><span class="no">&mdash;</span></td>
+            <td class="plan-col premium-col"><span class="yes">&#10003;</span></td>
+          </tr>
+          <tr>
+            <td>Gym challenges</td>
+            <td class="plan-col"><span class="qual">Limited</span></td>
+            <td class="plan-col premium-col"><span class="qual">City-wide</span></td>
+          </tr>
+          <tr>
+            <td>Slot reservations</td>
+            <td class="plan-col"><span class="qual">Standard</span></td>
+            <td class="plan-col premium-col"><span class="qual">Early access</span></td>
+          </tr>
+          <tr>
+            <td>Streak freezes</td>
+            <td class="plan-col"><span class="no">&mdash;</span></td>
+            <td class="plan-col premium-col"><span class="yes">&#10003;</span></td>
+          </tr>
+          <tr>
+            <td>Streak rewards</td>
+            <td class="plan-col"><span class="qual">Free session at 30 days</span></td>
+            <td class="plan-col premium-col"><span class="qual">Rewards on every streak</span></td>
+          </tr>
+          <tr>
+            <td>Training analysis</td>
+            <td class="plan-col"><span class="qual">Basic</span></td>
+            <td class="plan-col premium-col"><span class="qual">In-depth</span></td>
+          </tr>
+          <tr>
+            <td>In-app nudges to stay on track</td>
+            <td class="plan-col"><span class="no">&mdash;</span></td>
+            <td class="plan-col premium-col"><span class="yes">&#10003;</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pricing-cta reveal">
+      <a href="#join" class="btn-primary">Go Premium &mdash; &pound;15/mo or &pound;90/yr</a>
     </div>
 
     <div class="trainer-premium-card reveal">
